@@ -14,19 +14,24 @@
     "@react-router/node": "^7.5.3",
     "@react-router/serve": "^7.5.3",
     "isbot": "^5.1.27",
+    "lucide-react": "^0.507.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-hook-form": "^7.56.2",
     "react-router": "^7.5.3"
   },
   "devDependencies": {
+    "@eslint/js": "^9.26.0",
     "@react-router/dev": "^7.5.3",
     "@tailwindcss/vite": "^4.1.4",
     "@types/node": "^20",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
+    "eslint": "^9.26.0",
     "husky": "^9.1.7",
     "tailwindcss": "^4.1.4",
     "typescript": "^5.8.3",
+    "typescript-eslint": "^8.31.1",
     "vite": "^6.3.3",
     "vite-tsconfig-paths": "^5.1.4"
   }
