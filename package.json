@@ -3,10 +3,12 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "test": "echo \"No tests specified\" && exit 0",
     "build": "react-router build",
     "dev": "react-router dev",
     "start": "react-router-serve ./build/server/index.js",
-    "typecheck": "react-router typegen && tsc"
+    "typecheck": "react-router typegen && tsc",
+    "prepare": "husky"
   },
   "dependencies": {
     "@react-router/node": "^7.5.3",
@@ -22,6 +24,7 @@
     "@types/node": "^20",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
+    "husky": "^9.1.7",
     "tailwindcss": "^4.1.4",
     "typescript": "^5.8.3",
     "vite": "^6.3.3",
