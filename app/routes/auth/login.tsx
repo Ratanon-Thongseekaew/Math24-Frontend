@@ -1,7 +1,9 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router";
 import type { z } from "zod";
 import { actionLogin } from "~/api/auth";
+import useAuthStore from "~/stores/authStore";
 import createAlert from "~/utils/createAlert";
 import FormInput from "~/utils/formInput";
 import { loginUser } from "~/utils/validators";
@@ -10,21 +12,24 @@ import { loginUser } from "~/utils/validators";
 type LoginData = z.infer<typeof loginUser>;
 
 export default function Login () {
+
+const actionLoginWithZustand = useAuthStore((state)=>state.actionLoginWithZustand)
+const navigate = useNavigate()
     const { register, handleSubmit, formState, reset } = useForm({
         resolver: zodResolver(loginUser)
     })
     const { isSubmitting, errors } = formState;
-  const hdlSubmit = async (data: LoginData) => {
+  const hdlSubmit = async (value: LoginData) => {
         await new Promise((resolve) => setTimeout(resolve, 1000));
-        try {
-            const response = await actionLogin(data);
-            console.log("API Response:", response.data);
-            createAlert("success", "Login Successfully");
-            reset();
-        } catch (error: any) {
-            console.error("Login error:", error);
-            createAlert("error", error.response?.data?.message);
-        }
+        const res = await actionLoginWithZustand(value)
+        console.log("actionwithZustand check:", res)
+        if(res.success){
+            reset()
+            createAlert("success",`Welcome back, ${res.firstname}`)
+            navigate("/home")
+          }else
+          createAlert("info", "Invalid Email or Password")
+          console.log(res.error)
     }
     return(
         <div className="flex w-full h-full justify-center items-center min-h-screen bg-gray-50 bg-gradient-to-b from-amber-300 to-amber-500">
