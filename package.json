@@ -11,14 +11,17 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.0.1",
     "@react-router/node": "^7.5.3",
     "@react-router/serve": "^7.5.3",
+    "axios": "^1.9.0",
     "isbot": "^5.1.27",
     "lucide-react": "^0.507.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-hook-form": "^7.56.2",
-    "react-router": "^7.5.3"
+    "react-router": "^7.5.3",
+    "zod": "^3.24.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.26.0",

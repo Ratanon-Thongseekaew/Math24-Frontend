@@ -4,12 +4,12 @@ import { useNavigate } from "react-router";
 
 export function Welcome() {
   const navigate = useNavigate()
-  // const hdlNavigatetoRegister = ()=>{
-  //   navigate()
-  // }
-  // const hdlNavigatetoLogin = ()=>{
-  //   navigate()
-  // }
+  const hdlNavigatetoRegister = ()=>{
+    navigate("/register")
+  }
+  const hdlNavigatetoLogin = ()=>{
+    navigate("/login")
+  }
   return (
     <main className="flex items-center justify-center pt-16 pb-4 w-screen h-screen bg-gradient-to-b from-amber-300 to-amber-500">
       <div className="flex-1 flex flex-col items-center gap-16 min-h-0">
@@ -26,11 +26,11 @@ export function Welcome() {
             <div className="flex flex-col gap-4">
               <div className="flex gap-4 items-center">
                 <User size={30} color="#4F46E5" />
-                <p className="font-medium text-gray-700 text-[14px] cursor-pointer">Register</p>
+                <p className="font-medium text-gray-700 text-[14px] cursor-pointer" onClick={hdlNavigatetoRegister}>Register</p>
               </div>
               <div className="flex gap-4 items-center mb-3">
                 <LogIn size={30} color="#16A34A" />
-                <p className="font-medium text-gray-700 text-[14px] cursor-pointer">Login</p>
+                <p className="font-medium text-gray-700 text-[14px] cursor-pointer" onClick={hdlNavigatetoLogin}>Login</p>
               </div>
             
             </div>
