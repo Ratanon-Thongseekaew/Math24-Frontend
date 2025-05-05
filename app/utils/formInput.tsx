@@ -1,4 +1,4 @@
-import type { FieldErrors, UseFormRegister } from "react-hook-form";
+import type { FieldErrors, UseFormRegister  } from "react-hook-form";
 
 interface FormData {
     firstname: string;
