@@ -1,28 +1,28 @@
-import type { FieldErrors, UseFormRegister  } from "react-hook-form";
+import type { FieldErrors, UseFormRegister,Path,FieldValues  } from "react-hook-form";
 
-interface FormData {
-    firstname: string;
-    lastname: string;
-    email: string;
-    password: string;
-    confirmPassword: string;
+// interface FormData {
+//     firstname: string;
+//     lastname: string;
+//     email: string;
+//     password: string;
+//     confirmPassword: string;
+//   }
+
+  interface FormInputProps<T extends FieldValues> {
+    name: Path<T>;
+    type?: string;
+    placeholder?: string;
+    register: UseFormRegister<T>;
+    errors: FieldErrors<T>;
   }
 
-interface FormInputProps {
-    name: "email" | "password" | "firstname" | "lastname" | "confirmPassword";
-    type?: string;
-    placeholder?: string
-    register: UseFormRegister<FormData>;
-    errors: FieldErrors<FormData>
-}
-
-export default function FormInput({
+export default function FormInput<T extends FieldValues>({
     name,
     type = "text",
     placeholder,
     register,
     errors
-}: FormInputProps) {
+}: FormInputProps<T>) {
     return (
         <div>
             <input
