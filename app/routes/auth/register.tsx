@@ -5,6 +5,7 @@ import { actionRegister } from "~/api/auth"
 import FormInput from "~/utils/formInput"
 import type { z } from "zod"
 import { Link } from "react-router"
+import createAlert from "~/utils/createAlert"
 
 type RegisterData = z.infer<typeof registerUser>;
 
@@ -14,14 +15,15 @@ export default function Register() {
     })
     const { isSubmitting, errors } = formState
   const hdlSubmit = async (data: RegisterData) => {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
         try {
             const response = await actionRegister(data);
             console.log("API Response:", response.data);
-            alert("successfully registered");
-            reset(); // รีเซ็ตฟอร์มหลังจากส่งข้อมูลสำเร็จ
-        } catch (error) {
+            createAlert("success", "Register Successfully");
+            reset(); 
+        } catch (error:any) {
             console.error("Registration error:", error);
-            alert("Registration failed. Please try again.");
+            createAlert("error", error.response?.data?.message);
         }
     }
     return (
