@@ -16,7 +16,7 @@ export const actionGenerateNumber = async (token: string): Promise<{data: Genera
   }
 
 }
-export const actionSubmitSolution = async(token:string,gameId:string | number,expression:number)=>{
+export const actionSubmitSolution = async(token:string,gameId:string | number,expression:string)=>{
 try {
     const result = await axios.post(
     `http://localhost:8888/api/games/submit-solution`,
@@ -34,4 +34,3 @@ try {
 }
     
 } 
-
