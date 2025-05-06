@@ -34,7 +34,7 @@ const useAuthStore = create<AuthStore>()(
                     console.log("Login attempt with:", value.email);
                     const res = await actionLogin(value);
                     
-                    // Check if res.data exists
+                    // Check  res.data 
                     if (!res || !res.data) {
                         console.error("API response is missing data:", res);
                         return {
@@ -45,7 +45,7 @@ const useAuthStore = create<AuthStore>()(
                     
                     const { payload, token } = res.data;
                     
-                    // Verify payload and token exist
+                    // Verify payload and token 
                     if (!payload || !token) {
                         console.error("Missing payload or token in response:", res.data);
                         return {
@@ -63,7 +63,6 @@ const useAuthStore = create<AuthStore>()(
                         firstname: payload.firstname,
                     };
                 } catch (error: any) {
-                    // Enhanced error logging
                     console.error("Login error:", error);
                     console.error("Response data:", error.response?.data);
                     console.error("Status code:", error.response?.status);

@@ -16,7 +16,7 @@ export default function UserHistory() {
     const [isLoading, setIsLoading] = useState(true);
     const pageSize = 5;
 
-    // Fetch history data based on the current page
+    // Fetch history data 
     useEffect(() => {
         const fetchHistory = async () => {
             try {

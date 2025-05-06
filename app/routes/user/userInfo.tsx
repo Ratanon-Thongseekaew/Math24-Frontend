@@ -6,10 +6,6 @@ export default function UserInfo() {
     const navigate = useNavigate();
     const payloadwithZustand = useAuthStore((state) => state.user);
     
-    // Mock join date (replace with actual data from your backend)
-    const joinDate = "March 15, 2025";
-
-    // Navigation handlers
     const hdlBackToHome = () => {
         navigate("/home");
     };
@@ -49,12 +45,11 @@ export default function UserInfo() {
                                     <h2 className="text-2xl font-bold text-gray-800 mb-1">
                                         {payloadwithZustand?.firstname} {payloadwithZustand?.lastname}
                                     </h2>
-                                    <p className="text-gray-500 text-sm">Player since {joinDate}</p>
                                 </div>
                                 
                                 <button className="flex items-center gap-1 px-3 py-1 bg-gray-100 rounded-md text-gray-600 hover:bg-gray-200 transition-colors">
                                     <Edit size={16} />
-                                    <span className="text-sm">Edit Profile</span>
+                                    <span className="text-sm cursor-pointer">Edit Profile</span>
                                 </button>
                             </div>
                             
@@ -64,7 +59,7 @@ export default function UserInfo() {
                                     className="flex items-center gap-2 px-4 py-2 bg-purple-100 text-purple-600 rounded-lg hover:bg-purple-200 transition-colors font-medium"
                                 >
                                     <Book size={16} />
-                                    <span>View History</span>
+                                    <span className="cursor-pointer">View History</span>
                                 </button>
                             </div>
                         </div>

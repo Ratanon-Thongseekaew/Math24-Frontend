@@ -6,7 +6,6 @@ import createAlert from "~/utils/createAlert";
 import { actionGenerateNumber, actionSubmitSolution } from "~/api/game";
 
 export default function Game() {
-    // State variables with proper TypeScript types
     const [numbers, setNumbers] = useState<number[]>([]);
     const [equation, setEquation] = useState<string>("");
     const [score, setScore] = useState<number>(0);
@@ -16,7 +15,6 @@ export default function Game() {
     const navigate = useNavigate();
     const token = useAuthStore((state) => state.token);
 
-    // Get numbers from backend API
     const fetchGameNumbers = async () => {
         try {
             setIsLoading(true);
@@ -42,7 +40,6 @@ export default function Game() {
         }
     };
 
-    // Initialize the game
     useEffect(() => {
         fetchGameNumbers();
     }, []);
@@ -56,7 +53,7 @@ export default function Game() {
     const hdlEquationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setEquation(e.target.value);
     };
-    // Submit solution to backend
+    // Submit solution 
     const submitSolution = async () => {
         try {
             if (!token) {
