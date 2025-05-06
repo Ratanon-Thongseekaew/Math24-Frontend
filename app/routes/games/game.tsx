@@ -169,7 +169,7 @@ export default function Game() {
                             className="flex items-center gap-2 px-4 py-2 bg-purple-100 text-purple-600 rounded-lg hover:bg-purple-200 transition-colors"
                         >
                             <RefreshCw size={18} />
-                            <span className="font-medium">New Numbers</span>
+                            <span className="font-medium cursor-pointer">New Numbers</span>
                         </button>
                         <button
                             onClick={() => {
@@ -178,37 +178,13 @@ export default function Game() {
                             className="flex items-center gap-2 px-4 py-2 bg-blue-100 text-blue-600 rounded-lg hover:bg-blue-200 transition-colors"
                         >
                             <HelpCircle size={18} />
-                            <span className="font-medium">Help</span>
+                            <span className="cursor-pointer font-medium">Help</span>
                         </button>
                     </div>
                 </section>
 
                 {/* Game Board */}
                 <section className="w-full bg-white rounded-xl shadow-lg p-6">
-                    {gameCompleted ? (
-                        <div className="text-center">
-                            <h2 className="text-2xl font-bold text-gray-800 mb-4">Game Over!</h2>
-                            <p className="text-lg text-gray-600 mb-6">Your final score: {score}</p>
-                            <div className="flex gap-4 justify-center">
-                                <button
-                                    onClick={() => {
-                                        setGameCompleted(false);
-                                        setScore(0);
-                                        startNewGame();
-                                    }}
-                                    className="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg shadow-md font-bold transition-all hover:from-blue-600 hover:to-purple-700"
-                                >
-                                    Play Again
-                                </button>
-                                <button
-                                    onClick={handleBackToHome}
-                                    className="px-6 py-3 bg-gray-100 text-gray-700 rounded-lg shadow-md font-medium hover:bg-gray-200 transition-colors"
-                                >
-                                    Back to Home
-                                </button>
-                            </div>
-                        </div>
-                    ) : (
                         <>
                             <h2 className="text-xl font-bold text-gray-800 mb-4">Make 24 with these numbers:</h2>
 
@@ -246,7 +222,7 @@ export default function Game() {
                                     />
                                     <button
                                         onClick={clearEquation}
-                                        className="px-4 py-3 bg-red-100 text-red-600 rounded-lg hover:bg-red-200 transition-colors font-medium"
+                                        className="cursor-pointer px-4 py-3 bg-red-100 text-red-600 rounded-lg hover:bg-red-200 transition-colors font-medium"
                                     >
                                         Clear
                                     </button>
@@ -255,7 +231,7 @@ export default function Game() {
                                 <div className="flex justify-center gap-3 mt-6">
                                     <button
                                         onClick={submitSolution}
-                                        className="px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors font-medium text-lg"
+                                        className="cursor-pointer px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors font-medium text-lg"
                                         disabled={!equation}
                                     >
                                         Submit Answer
@@ -263,7 +239,7 @@ export default function Game() {
                                 </div>
                             </div>
                         </>
-                    )}
+                    
                 </section>
 
                 {/* Game Rules */}
