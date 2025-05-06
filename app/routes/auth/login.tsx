@@ -67,7 +67,7 @@ const navigate = useNavigate()
                                 Processing...
                             </div>
                         ) : (
-                            "Login In"
+                            "Login"
                         )}
                     </button>
                 </form>

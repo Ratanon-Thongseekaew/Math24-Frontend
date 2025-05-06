@@ -96,7 +96,7 @@ export default function userHome() {
                         </div>
                     </div>
 
-                    {/* Quick Links */}
+                    {/* history */}
                     <div className="bg-white rounded-xl shadow-md p-6">
                         <div className="flex items-center mb-4">
                             <Book size={20} className="text-amber-500 mr-2" />
@@ -136,16 +136,3 @@ export default function userHome() {
 
 }
 
-// {/* Daily Challenge */}
-// <section className="w-full bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl shadow-lg p-6 text-white">
-// <div className="flex justify-between items-center mb-4">
-//   <h2 className="text-xl font-bold">Daily Challenge</h2>
-//   <span className="bg-white text-purple-600 px-3 py-1 rounded-full text-sm font-medium">New</span>
-// </div>
-// <p className="mb-4">Solve today's special puzzle and climb the leaderboard!</p>
-// <button
-//   className="bg-white text-purple-600 py-2 px-6 rounded-lg shadow-md font-medium hover:bg-gray-100 transition-colors"
-// >
-//   Start Challenge
-// </button>
-// </section>
