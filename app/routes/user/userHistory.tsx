@@ -35,7 +35,7 @@ export default function UserHistory() {
                     setHistory(response.data.history);
                     if (response.data.totalCount) {
                         setTotalCount(response.data.totalCount);
-                        //total count / pagesize
+                        //total count divide pagesize
                         setTotalPages(Math.ceil(response.data.totalCount / pageSize));
                     } else {
                         setTotalPages(Math.max(currentPage, 1));

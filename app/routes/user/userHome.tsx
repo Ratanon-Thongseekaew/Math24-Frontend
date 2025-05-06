@@ -21,6 +21,10 @@ export default function userHome() {
     const hdlNavigatetoHistory=()=>{
         navigate("/history")
     }
+    const hdlNavigatetoProfile=()=>{
+        navigate("/info")
+    }
+
     return (
         <main className="flex items-center justify-center w-screen min-h-screen bg-gradient-to-b from-amber-300 to-amber-500 py-8">
             <div className="flex-1 flex flex-col items-center gap-8 max-w-4xl mx-auto px-4">
@@ -57,7 +61,7 @@ export default function userHome() {
                 </section>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
-                    {/* Game Options */}
+                    {/* Turtorial */}
                     <div className="bg-white rounded-xl shadow-md p-6">
                         <div className="flex items-center mb-4">
                             <Calculator size={24} className="text-blue-500 mr-2" />
@@ -72,7 +76,7 @@ export default function userHome() {
                         </ul>
                     </div>
 
-                    {/* Stats */}
+                    {/* Profile*/}
                     <div className="bg-white rounded-xl shadow-md p-6">
                         <div className="flex items-center mb-4">
                             <User size={24} className="text-green-600 mr-3" />
@@ -88,10 +92,11 @@ export default function userHome() {
                                 <span className="font-medium text-gray-800">{payloadwithZustand?.lastname}</span>
                             </div>
                             <div className="flex justify-between">
-                                <span className="text-gray-600">Game Played:</span>
-                                <span className="font-medium text-gray-800">36</span>
+                                <span className="text-gray-600">Game Won:</span>
+                                <span className="font-medium text-gray-800">19</span>
                             </div>
                             <button
+                                onClick={hdlNavigatetoProfile}
                                 className="cursor-pointer mt-2 w-full text-center py-2 bg-gray-100 rounded-lg text-gray-700 hover:bg-gray-200 transition-colors"
                             >
                                 View Detailed Profile
@@ -106,24 +111,9 @@ export default function userHome() {
                             <h3 className="text-xl font-semibold text-gray-800">Game History</h3>
                         </div>
                         <div className="space-y-3">
-                            <div
-                                className="flex items-center py-2 px-3 rounded-lg hover:bg-gray-100 cursor-pointer transition-colors"
-                            >
-                                <Trophy size={20} className="text-amber-500 mr-2" />
-                                <span className="text-gray-700">Leaderboard</span>
-                            </div>
-                            <div
-                                className="flex items-center py-2 px-3 rounded-lg hover:bg-gray-100 cursor-pointer transition-colors"
-                            >
-                                <Clock size={20} className="text-blue-500 mr-2" />
-                                <span className="text-gray-700">Game History</span>
-                            </div>
-                            <div
-                                className="flex items-center py-2 px-3 rounded-lg hover:bg-gray-100 cursor-pointer transition-colors"
-                            >
-                                <Book size={20} className="text-green-500 mr-2" />
-                                <span className="text-gray-700">Tutorials</span>
-                            </div>
+                          <ul className="space-y-3 text-gray-700">
+                            <li >Look at your previous challenges, numbers, numbers of sucesss, and your equation!</li>
+                        </ul>
                             <button
                                 onClick={hdlNavigatetoHistory}
                                 className="cursor-pointer mt-2 w-full text-center py-2 bg-gray-100 rounded-lg text-gray-700 hover:bg-gray-200 transition-colors"
