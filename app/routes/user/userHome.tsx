@@ -1,4 +1,4 @@
-import { Book, Calculator, Clock, LogOut, Settings, TrendingUp, Trophy, User } from "lucide-react";
+import { Book, Calculator, Clock, LogOut, Trophy, User } from "lucide-react";
 import { useNavigate } from "react-router";
 import useAuthStore from "~/stores/authStore";
 import createAlert from "~/utils/createAlert";
@@ -17,6 +17,9 @@ export default function userHome() {
     }
     const hdlNavigatetoGame =()=>{
         navigate("/game")
+    }
+    const hdlNavigatetoHistory=()=>{
+        navigate("/history")
     }
     return (
         <main className="flex items-center justify-center w-screen min-h-screen bg-gradient-to-b from-amber-300 to-amber-500 py-8">
@@ -122,6 +125,7 @@ export default function userHome() {
                                 <span className="text-gray-700">Tutorials</span>
                             </div>
                             <button
+                                onClick={hdlNavigatetoHistory}
                                 className="cursor-pointer mt-2 w-full text-center py-2 bg-gray-100 rounded-lg text-gray-700 hover:bg-gray-200 transition-colors"
                             >
                                 View Detailed History

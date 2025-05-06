@@ -30,7 +30,6 @@ try {
     return result;
 } catch (error) {
     console.log("submit solution error check:", error);
-
 }
     
 } 

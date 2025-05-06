@@ -1,4 +1,4 @@
-import { ArrowLeft, HelpCircle, RefreshCw, Check, X } from "lucide-react";
+import { ArrowLeft, HelpCircle, RefreshCw, Check } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import useAuthStore from "~/stores/authStore";
@@ -10,12 +10,10 @@ export default function Game() {
     const [numbers, setNumbers] = useState<number[]>([]);
     const [equation, setEquation] = useState<string>("");
     const [score, setScore] = useState<number>(0);
-    const [gameCompleted, setGameCompleted] = useState<boolean>(false);
     const [gameId, setGameId] = useState<string | number | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     
     const navigate = useNavigate();
-    const user = useAuthStore((state) => state.user);
     const token = useAuthStore((state) => state.token);
 
     // Get numbers from backend API
@@ -54,31 +52,10 @@ export default function Game() {
         setEquation("");
     };
 
-    // Reset the game completely
-    const resetGameCompletely = () => {
-        setEquation("");
-    };
-
-    // Handle equation input change
-    const handleEquationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // hdl input on change
+    const hdlEquationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setEquation(e.target.value);
     };
-
-    // Add operator or number to equation
-    const addToEquation = (value: string) => {
-        setEquation(prev => prev + value);
-    };
-
-    // Clear equation
-    const clearEquation = () => {
-        setEquation("");
-    };
-
-    // Remove last character from equation
-    const removeLastChar = () => {
-        setEquation(prev => prev.slice(0, -1));
-    };
-
     // Submit solution to backend
     const submitSolution = async () => {
         try {
@@ -91,7 +68,7 @@ export default function Game() {
                 return;
             }
 
-            // ตรวจสอบว่ามีสมการหรือไม่
+            // ตรวจสอบ equation
             if (!equation) {
                 createAlert("error", "Please enter an equation");
                 return;
@@ -106,7 +83,7 @@ export default function Game() {
                     createAlert("success", "Great job! Your solution is correct!");
                     setScore(score + 1);
                     fetchGameNumbers(); // ดึงตัวเลขใหม่
-                    resetGameCompletely(); // รีเซ็ตทั้งหมด
+                    resetGame(); 
                 } else {
                     createAlert("error", "Your solution is incorrect. Try again!");
                     console.log("Submitted expression:", equation);
@@ -121,22 +98,15 @@ export default function Game() {
         }
     };
 
-    // Skip current solution and start over
-    const skipSolution = () => {
-        resetGameCompletely(); // Reset all
-        fetchGameNumbers(); // Get new numbers
-    };
-
-    const handleBackToHome = () => {
+    const hdlBackToHome = () => {
         navigate("/home");
     };
 
     // Start a new game with new numbers
     const startNewGame = () => {
         fetchGameNumbers();
-        setGameCompleted(false);
         setScore(0);
-        resetGameCompletely(); // Reset all
+        resetGame(); 
     };
 
     return (
@@ -148,11 +118,11 @@ export default function Game() {
                             Math 24 Game
                         </h1>
                         <button
-                            onClick={handleBackToHome}
+                            onClick={hdlBackToHome}
                             className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow-md hover:bg-gray-100 transition-colors"
                         >
                             <ArrowLeft size={20} color="#4F46E5" />
-                            <span className="text-gray-700 font-medium">Back to Home</span>
+                            <span className="text-gray-700 font-medium cursor-pointer">Back to Home</span>
                         </button>
                     </div>
                 </header>
@@ -216,12 +186,12 @@ export default function Game() {
                                     <input
                                         type="text"
                                         value={equation}
-                                        onChange={handleEquationChange}
+                                        onChange={hdlEquationChange}
                                         placeholder="Enter your equation..."
                                         className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-lg"
                                     />
                                     <button
-                                        onClick={clearEquation}
+                                        onClick={resetGame}
                                         className="cursor-pointer px-4 py-3 bg-red-100 text-red-600 rounded-lg hover:bg-red-200 transition-colors font-medium"
                                     >
                                         Clear

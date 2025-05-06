@@ -2,7 +2,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import type { z } from "zod";
-import { actionLogin } from "~/api/auth";
 import useAuthStore from "~/stores/authStore";
 import createAlert from "~/utils/createAlert";
 import FormInput from "~/utils/formInput";
